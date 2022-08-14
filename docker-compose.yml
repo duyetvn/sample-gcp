@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  app:
+    container_name: sample_gcp_web
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/app/node_modules
+    environment:
+      RAILS_ENV: development
+      VIRTUAL_PORT: 80
+    stdin_open: true
+    tty: true
+  db:
+    container_name: sample_gcp_db
+    image: postgres:12.1
+    ports:
+      - "43306:3306"
+    volumes:
+      - ~/DockerDesktop/dbMount/sample-gcp/db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: 'dev'
+    restart: always
+volumes:
+  gem_cache:
+  db_data:
+  node_modules:
