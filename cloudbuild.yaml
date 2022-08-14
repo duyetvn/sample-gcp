@@ -21,10 +21,10 @@ steps:
     secretEnv: ["RAILS_MASTER_KEY_SECRET"]
 
 substitutions:
-  _REGION: asia-northeast1
-  _SERVICE_NAME: invoice-app
-  _INSTANCE_NAME: jira-core-db
-  _SECRET_NAME: rails_master_key
+  _REGION: plop
+  _SERVICE_NAME: plop
+  _INSTANCE_NAME: plop
+  _SECRET_NAME: plop
 
 availableSecrets:
   secretManager:
