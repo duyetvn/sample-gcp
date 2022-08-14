@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sample GCP
 
-Things you may want to cover:
+## Run cloud build
 
-* Ruby version
+```
+gcloud builds submit --config cloudbuild.yaml \                
+    --substitutions _SERVICE_NAME=plop,_INSTANCE_NAME=plop,_REGION=plop,_SECRET_NAME=plop
+```
 
-* System dependencies
+## Cloud run
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+gcloud run deploy sample-gcp-app \                             
+     --platform managed \                                                                                                                
+     --region plop \
+     --image gcr.io/plop/plop \
+     --add-cloudsql-instances plop:plop:plop \
+     --allow-unauthenticated
+```
